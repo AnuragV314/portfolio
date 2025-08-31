@@ -626,24 +626,26 @@
             </ul>
         </section>
 
-        <section id="contact" class="py-20 dark:bg-gray-900 bg-white relative overflow-hidden">
+        <section id="contact" class="py-20 dark:bg-gray-900 bg-white relative">
             <div class="max-w-xl mx-auto text-center px-6">
                 <h2 class="section-title text-indigo-800 dark:text-indigo-100 text-4xl font-extrabold mb-8">Get in Touch
                 </h2>
-                <p class="mb-8 text-gray-700 dark:text-gray-300 text-lg max-w-lg mx-auto">Feel free to reach out for
-                    collaborations,
-                    projects, or just to say hello! I’m always open to connecting.</p>
+                <p class="mb-8 text-gray-700 dark:text-gray-300 text-lg max-w-lg mx-auto">
+                    Feel free to reach out for collaborations, projects, or just to say hello! I’m always open to
+                    connecting.
+                </p>
                 <a href="mailto:vermagup01@gmail.com"
-                    class="inline-flex items-center space-x-3 bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-8 rounded-lg font-semibold shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-50 interactive-button-contact">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 12H8m8 0l-4 4m0-8l4 4" />
+                    class="group relative inline-flex items-center px-6 py-3 bg-indigo-600 bg-opacity-30 backdrop-blur-sm border border-white border-opacity-20 text-white font-semibold rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:bg-opacity-20 hover:border-opacity-40 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-50">
+                    <span
+                        class="absolute left-0 w-0 h-full bg-indigo-400 opacity-20 transition-all duration-300 group-hover:w-full"></span>
+                    <svg class="w-6 h-6 mr-2 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                     <span>Email Me</span>
                 </a>
             </div>
-            <div
-                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-48 flex items-center justify-center opacity-10 pointer-events-none">
+            <div class="absolute -bottom-24 left-1/2 transform -translate-x-1/2 opacity-10 pointer-events-none">
                 <svg width="200" height="200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" class="text-indigo-300" viewBox="0 0 24 24">
                     <path d="M2 7v10c0 1.1.9 2 2 2h4v-2H4V7h16v10h-4v2h4c1.1 0 2-.9 2-2V7H2z" />
@@ -651,6 +653,7 @@
                 </svg>
             </div>
         </section>
+        
     </main>
 
     <footer class="w-full bg-indigo-900 dark:bg-gray-900 text-indigo-200 py-8 text-center">
