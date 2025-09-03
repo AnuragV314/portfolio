@@ -13,6 +13,7 @@
         };
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -182,7 +183,26 @@
             background: #9ca3af;
         }
 
+        .hero-section {
+            position: relative;
+        }
+
+        /* Main container should be relative */
+        .main-container {
+            position: relative;
+        }
+
         #orbitParticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            /* Ensure it's behind content */
+        }
+
+        #heroCanvas {
             position: absolute;
             top: 0;
             left: 0;
@@ -204,7 +224,10 @@
     <nav
         class="shadow-md sticky top-0 z-50 transition-colors duration-500 w-full bg-indigo-900 dark:bg-gray-900 text-indigo-200 text-center">
         <div class="container mx-auto px-6 py-3 flex items-center justify-between">
-            <a href="#" class="text-2xl font-bold text-white">Anurag Verma</a>
+            <div class="flex items-center">
+                <a href="#"><img src="logo.png" alt="Logo" class="h-10 w-15" /></a>
+                <a href="#" class="text-2xl font-bold text-white">Anurag Verma</a>
+            </div>
             <div class="hidden md:flex space-x-4">
                 <a href="#about" class="text-indigo-200 hover:text-indigo-400 px-3 py-2 rounded-md">About</a>
                 <a href="#skills" class="text-indigo-200 hover:text-indigo-400 px-3 py-2 rounded-md">Skills</a>
@@ -252,7 +275,7 @@
     </nav>
 
     <section
-        class="relative flex flex-col items-center justify-center h-screen text-center bg-indigo-900 dark:bg-gray-900 text-white overflow-hidden">
+        class="hero-section relative flex flex-col items-center justify-center h-screen text-center bg-indigo-900 dark:bg-gray-900 text-white overflow-hidden">
         <canvas id="orbitParticles" class="absolute inset-0"></canvas>
         <div class="hero-content relative z-10 p-4">
             <h2 class="text-5xl font-extrabold mb-4">Hi, I'm Anurag</h2>
@@ -289,8 +312,8 @@
             <button id="download-btn"
                 class="group relative inline-flex items-center px-6 py-3 bg-indigo-600 bg-opacity-30 backdrop-blur-sm text-white text-base font-semibold rounded-lg border border-white border-opacity-20 shadow-md overflow-hidden transition-all duration-300 hover:bg-opacity-20 hover:border-opacity-40 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-50">
                 <span
-                        class="absolute left-0 w-0 h-full bg-indigo-400 opacity-20 transition-all duration-300 group-hover:w-full"></span>
-                
+                    class="absolute left-0 w-0 h-full bg-indigo-400 opacity-20 transition-all duration-300 group-hover:w-full"></span>
+
                 <svg class="w-6 h-6 mr-2 transition-transform duration-300 group-hover:scale-125 group-hover:translate-y-1"
                     fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -310,60 +333,176 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
 
-    <main class="container mx-auto px-6 py-16 space-y-20">
+    <main class="main-container container relative mx-auto px-6 py-16 space-y-20">
+        <!-- <canvas id="backgroundCanvas" class="absolute inset-0 w-full h-full"></canvas> -->
+        <canvas id="heroCanvas" class="absolute inset-0 z-0"></canvas>
 
-        <section id="about">
-            <h2 class="section-title text-gray-800 dark:text-indigo-100">About Me</h2>
-            <div class="card max-w-4xl mx-auto text-center">
-                <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 m-10">
-                    Hello! I’m Anurag Verma, a passionate Full Stack Developer and Machine Learning Practitioner
-                    based in Noida, India. I specialize in building scalable web applications and have experience
-                    working with Python, Django, FastAPI, PostgreSQL, MongoDB, HTML, CSS, and JavaScript.
-                </p>
+        <section id="about" class="bg-indigo-100 py-16 dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-indigo-700 text-4xl font-extrabold mb-12 text-center tracking-wide">About
+                    Me</h2>
+                <div class="py-16 dark:bg-gray-900 p-8 flex flex-col md:flex-row items-center gap-10 ">
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div
+                            class="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-indigo-50 shadow-xl">
+                            <img src="anurag-001.jpg" alt="Anurag Verma"
+                                class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg transform transition duration-500 hover:scale-105" />
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-2/3 text-center md:text-left">
+                        <!-- <h3 class="text-3xl font-bold mb-4">Anurag Verma</h3> -->
+                        <p class="text-lg">
+                            I'm a driven <strong class="font-bold">Software Engineer</strong> and
+                            <strong class="font-bold">Machine Learning Practitioner</strong> with proficiency in <strong
+                                class="font-bold">Python</strong>,
+                            <strong class="font-bold">Django</strong>, <strong class="font-bold">FastAPI</strong>, and
+                            <strong class="font-bold">Data Science</strong>.
+                            Experienced in building ML models, RESTful APIs, and scalable web applications. Enthusiastic
+                            about driving innovation, solving
+                            complex problems, and continuously enhancing technical skills.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="skills">
-            <h2 class="section-title text-gray-800 dark:text-indigo-100">Skills</h2>
-            <div
-                class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center text-gray-700 dark:text-gray-300 font-semibold">
-                <div class="card">Python</div>
-                <div class="card">Java</div>
-                <div class="card">C</div>
-                <div class="card">JavaScript</div>
-                <div class="card">Django</div>
-                <div class="card">FastAPI</div>
-                <div class="card">Flask</div>
-                <div class="card">RESTful APIs</div>
-                <div class="card">PostgreSQL</div>
-                <div class="card">MongoDB</div>
-                <div class="card">MySQL</div>
-                <div class="card">HTML & CSS</div>
-                <div class="card">Bootstrap</div>
-                <div class="card">Tailwind CSS</div>
-                <div class="card">Git</div>
-                <div class="card">Linux</div>
-                <div class="card">Docker</div>
-                <div class="card">Pandas</div>
-                <div class="card">NumPy</div>
-                <div class="card">Matplotlib</div>
-                <div class="card">Seaborn</div>
-                <div class="card">Plotly</div>
-                <div class="card">Power BI</div>
-                <div class="card">Scikit-Learn</div>
-                <div class="card">Supervised Learning</div>
-                <div class="card">Unsupervised Learning</div>
-                <div class="card">Neural Networks</div>
-                <div class="card">K-Means Clustering</div>
-                <div class="card">DBSCAN</div>
-                <div class="card">Hierarchical Clustering</div>
+        <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4 text-center border-b-2 border-indigo-400">Languages</h3>
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20 border-x-8 border-purple-400">Python</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">JavaScript</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Java</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">C</span>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4 text-center border-b-2 border-indigo-400">Frameworks &
+                            Libraries</h3>
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Django</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">FastAPI</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Flask</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">RESTful
+                                APIs</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Scikit-Learn</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Pandas</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">NumPy</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Matplotlib</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Seaborn</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Plotly</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4 text-center border-b-2 border-indigo-400">Databases</h3>
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">PostgreSQL</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">MongoDB</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">MySQL</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4 text-center border-b-2 border-indigo-400">Machine Learning
+                            & Data Science
+                        </h3>
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Supervised
+                                Learning</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Unsupervised
+                                Learning</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Neural
+                                Networks</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">K-Means
+                                Clustering</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">DBSCAN
+                            </span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Hierarchical
+                                Clustering
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4 text-center border-b-2 border-indigo-400">Frontend
+                        </h3>
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">HTML
+                                & CSS</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Tailwind
+                                CSS</span>
+
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Bootstrap
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4 text-center border-b-2 border-indigo-400">Tools & Other
+                        </h3>
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Git</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Docker</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Linux</span>
+                            <span
+                                class="bg-indigo-600 bg-opacity-30 px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 hover:bg-opacity-20">Power
+                                BI</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-       <section id="projects" class="py-16 bg-gray-100 dark:bg-gray-900">
+
+
+
+        <section id="projects" class="py-16 bg-gray-100 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">Projects</h2>
 
@@ -570,23 +709,27 @@
             </div>
         </section>
 
-        <section id="education" class="bg-indigo-50 py-16 dark:bg-gray-900">
+        <section id="education" class="bg-indigo-100 py-16 dark:bg-gray-900">
             <h2 class="section-title text-indigo-700 text-3xl font-extrabold mb-12 text-center tracking-wide">
                 Education
             </h2>
             <div class="max-w-3xl mx-auto space-y-8">
                 <div
-                    class="bg-white rounded-lg shadow-lg p-8 border-l-8 border-indigo-600 hover:shadow-indigo-500/40 transition-shadow duration-300 dark:bg-gray-900">
-                    <h3 class="text-2xl font-semibold text-indigo-900 mb-1">Master of Computer Applications (MCA)</h3>
-                    <p class="text-indigo-700 italic mb-3">Dr. APJ Abdul Kalam Technical University (AKTU), Lucknow,
+                    class="rounded-lg shadow-lg p-8 border-l-8 border-indigo-600 hover:shadow-indigo-500/40 transition-shadow duration-300 dark:bg-gray-900">
+                    <h3 class="text-2xl font-semibold text-indigo-900 mb-1 dark:text-white">Master of Computer
+                        Applications (MCA)</h3>
+                    <p class="text-indigo-700 italic mb-3 dark:text-white">Dr. APJ Abdul Kalam Technical University
+                        (AKTU), Lucknow,
                         2024</p>
                     <p class="text-600">Focused on advanced software development, data structures, and machine
                         learning techniques.</p>
                 </div>
                 <div
-                    class="bg-white rounded-lg shadow-lg p-8 border-l-8 border-indigo-400 hover:shadow-indigo-500/40 transition-shadow duration-300 dark:bg-gray-900 ">
-                    <h3 class="text-2xl font-semibold text-indigo-900 mb-1">Bachelor of Science (B.Sc.)</h3>
-                    <p class="text-indigo-700 italic mb-3">Veer Bahadur Singh Purvanchal University, Jaunpur, 2021</p>
+                    class="rounded-lg shadow-lg p-8 border-l-8 border-indigo-400 hover:shadow-indigo-500/40 transition-shadow duration-300 dark:bg-gray-900 ">
+                    <h3 class="text-2xl font-semibold text-indigo-900 mb-1 dark:text-white">Bachelor of Science (B.Sc.)
+                    </h3>
+                    <p class="text-indigo-700 italic mb-3 dark:text-white">Veer Bahadur Singh Purvanchal University,
+                        Jaunpur, 2021</p>
                     <p class="text-600">Majored in <strong>Mathematics</strong> with foundational training in logic,
                         problem-solving, and analytical reasoning.</p>
                 </div>
@@ -626,7 +769,7 @@
             </ul>
         </section>
 
-        <section id="contact" class="py-20 dark:bg-gray-900 bg-white relative">
+        <section id="contact" class="bg-indigo-100 py-20 dark:bg-gray-900 relative">
             <div class="max-w-xl mx-auto text-center px-6">
                 <h2 class="section-title text-indigo-800 dark:text-indigo-100 text-4xl font-extrabold mb-8">Get in Touch
                 </h2>
@@ -647,13 +790,13 @@
             </div>
             <div class="absolute -bottom-24 left-1/2 transform -translate-x-1/2 opacity-10 pointer-events-none">
                 <svg width="200" height="200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" class="text-indigo-300" viewBox="0 0 24 24">
+                    stroke-linejoin="round" class="text-indigo-600" viewBox="0 0 24 24">
                     <path d="M2 7v10c0 1.1.9 2 2 2h4v-2H4V7h16v10h-4v2h4c1.1 0 2-.9 2-2V7H2z" />
                     <path d="M12 11l7-5v10l-7 5-7-5V6l7 5z" />
                 </svg>
             </div>
         </section>
-        
+
     </main>
 
     <footer class="w-full bg-indigo-900 dark:bg-gray-900 text-indigo-200 py-8 text-center">
@@ -757,34 +900,113 @@
     </script>
 
     <script>
-        // Orbit Particles Script
-        const canvas = document.getElementById('orbitParticles');
-        // Check if canvas exists to prevent errors
-        if (canvas) {
+        // --- First Animation: Falling Particles ---
+        // Encapsulated within its own scope
+        (function () {
+            // Get the canvas and its drawing context
+            const canvas = document.getElementById('heroCanvas');
+            // Ensure the canvas exists before trying to draw on it
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const particleCount = 75;
+
+            function resizeCanvas() {
+                if (canvas.parentElement) {
+                    canvas.width = canvas.parentElement.offsetWidth;
+                    canvas.height = canvas.parentElement.offsetHeight;
+                }
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 10 + 0.5;
+                    this.speed = Math.random() * 0.5 + 0.1;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                }
+
+                update() {
+                    this.y += this.speed;
+                    if (this.y > canvas.height) {
+                        this.y = 0;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+
+                draw() {
+                    const isDarkMode = document.body.classList.contains('dark');
+                    const baseColor = isDarkMode ? `rgba(255, 255, 255, 20)` : `rgba(28, 21, 184, 20)`;
+                    const glowColor = isDarkMode ? `rgba(255, 255, 255, ${this.opacity * 0.8})` : `rgba(28, 21, 184, ${this.opacity * 0.8})`;
+
+                    ctx.fillStyle = baseColor;
+                    ctx.shadowColor = glowColor;
+                    ctx.shadowBlur = this.size * 5;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.shadowColor = 'transparent';
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            function init() {
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            init();
+            animate();
+        })();
+
+        // --- Second Animation: Orbiting Particles ---
+        // Also encapsulated for isolation
+        (function () {
+            const canvas = document.getElementById('orbitParticles');
+            // Ensure the canvas exists to prevent errors
+            if (!canvas) return;
+
             const ctx = canvas.getContext('2d');
             let width, height;
 
             function resize() {
-                // Get the dimensions from the parent section
                 const heroSection = canvas.parentElement;
                 width = heroSection.clientWidth;
                 height = heroSection.clientHeight;
                 canvas.width = width;
                 canvas.height = height;
             }
-            resize(); // Initial resize
-            window.addEventListener('resize', resize); // Resize on window change
+
+            resize();
+            window.addEventListener('resize', resize);
 
             const PARTICLES_COUNT = 70;
             const particles = [];
 
             const cursor = { x: null, y: null, radius: 100 };
-
             window.addEventListener('mousemove', (e) => {
                 cursor.x = e.clientX;
                 cursor.y = e.clientY;
             });
-
             window.addEventListener('mouseout', () => {
                 cursor.x = null;
                 cursor.y = null;
@@ -796,7 +1018,7 @@
                     this.radius = radius;
                     this.speed = speed;
                     this.size = 1 + Math.random() * 2;
-                    this.color = 'rgba(165, 180, 252, 0.7)'; // indigo-300 with opacity
+                    this.color = 'rgba(165, 180, 252, 0.7)'; // indigo-300
                     this.x = 0;
                     this.y = 0;
                 }
@@ -820,15 +1042,16 @@
                             baseY += Math.sin(angleFromCursor) * force * 20;
                         }
                     }
-
                     this.x = baseX;
                     this.y = baseY;
                 }
 
                 draw() {
+                    const isDarkMode = document.body.classList.contains('dark');
+                    const color = isDarkMode ? `rgba(165, 180, 252, 0.7)` : `white`;
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
+                    ctx.fillStyle = color;
                     ctx.shadowColor = '#a5b4fc';
                     ctx.shadowBlur = 8;
                     ctx.fill();
@@ -850,7 +1073,6 @@
 
             function animate() {
                 ctx.clearRect(0, 0, width, height);
-
                 particles.forEach(p => p.update());
 
                 for (let i = 0; i < PARTICLES_COUNT; i++) {
@@ -866,52 +1088,51 @@
                         }
                     }
                 }
-
                 particles.forEach(p => p.draw());
-
                 requestAnimationFrame(animate);
             }
 
             animate();
-        }
+        })();
     </script>
 
 
 
     <script>
-            const downloadBtn = document.getElementById('download-btn');
-            const progressContainer = document.getElementById('progress-container');
-            const progressBar = document.getElementById('progress-bar');
-            const progressLabel = document.getElementById('progress-label');
+        const downloadBtn = document.getElementById('download-btn');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressLabel = document.getElementById('progress-label');
 
-            downloadBtn.addEventListener('click', function () {
-                downloadBtn.style.display = "none";
-                progressContainer.classList.remove('hidden');
-                let percent = 0;
-                progressBar.style.width = "0%";
-                progressLabel.textContent = "0%";
-                const interval = setInterval(() => {
-                    percent += Math.floor(10 + Math.random() * 15);
-                    if (percent > 100) percent = 100;
-                    progressBar.style.width = percent + "%";
-                    progressLabel.textContent = percent + "%";
-                    if (percent === 100) {
-                        clearInterval(interval);
-                        progressLabel.textContent = "Completed";
-                        setTimeout(() => {
-                            progressContainer.classList.add('hidden');
-                            downloadBtn.style.display = "inline-flex";
-                            const link = document.createElement('a');
-                            link.href = 'Anurag_Python_01.pdf'; // Change path as needed
-                            link.download = 'Anurag_Verma_Resume.pdf';
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                        }, 700);
-                    }
-                }, 180);
-            });
-        </script>
+        downloadBtn.addEventListener('click', function () {
+            downloadBtn.style.display = "none";
+            progressContainer.classList.remove('hidden');
+            let percent = 0;
+            progressBar.style.width = "0%";
+            progressLabel.textContent = "0%";
+            const interval = setInterval(() => {
+                percent += Math.floor(10 + Math.random() * 15);
+                if (percent > 100) percent = 100;
+                progressBar.style.width = percent + "%";
+                progressLabel.textContent = percent + "%";
+                if (percent === 100) {
+                    clearInterval(interval);
+                    progressLabel.textContent = "Completed";
+                    setTimeout(() => {
+                        progressContainer.classList.add('hidden');
+                        downloadBtn.style.display = "inline-flex";
+                        const link = document.createElement('a');
+                        link.href = 'Anurag_Python_01.pdf'; // Change path as needed
+                        link.download = 'Anurag_Verma_Resume.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }, 700);
+                }
+            }, 180);
+        });
+    </script>
+
 </body>
 
 </html>
